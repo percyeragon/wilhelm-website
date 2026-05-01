@@ -1,0 +1,33 @@
+<section class="section section-wide" id="leistungen">
+  <div class="section-heading reveal" revealOnScroll>
+    <p class="eyebrow">Leistungen</p>
+    <h2>Mehr als nur eine schöne Oberfläche</h2>
+    <p>
+      Ich verbinde Gestaltung, Inhalt und Technik so, dass eine glaubwürdige Website entsteht, die dein Angebot verständlich macht.
+    </p>
+  </div>
+
+  <div class="service-grid">
+    @for (service of services; track service.id) {
+      <article
+        class="glass-card service-card reveal"
+        revealOnScroll
+        [style.--delay]="($index * 120) + 'ms'"
+      >
+        <div class="card-index">0{{ $index + 1 }}</div>
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.text }}</p>
+      </article>
+    }
+  </div>
+
+  <div class="benefit-band reveal" revealOnScroll>
+    @for (benefit of benefits; track benefit) {
+      <div class="benefit-item">
+        <span class="benefit-bullet"></span>
+        <p>{{ benefit }}</p>
+      </div>
+    }
+  </div>
+</section>
+

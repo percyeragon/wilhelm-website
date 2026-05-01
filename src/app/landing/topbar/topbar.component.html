@@ -1,0 +1,18 @@
+<header class="topbar reveal" revealOnScroll>
+  <a class="brand" href="#start" aria-label="Zur Startsektion">
+    <span class="brand-mark">WB</span>
+    <span class="brand-text">
+      <strong>Wilhelm Beiche</strong>
+      <small>Webentwicklung & Webdesign</small>
+    </span>
+  </a>
+
+  <nav class="nav" aria-label="Hauptnavigation" appScrollSpy>
+    @for (item of navItems; track item.href) {
+      <a [href]="item.href">{{ item.label }}</a>
+    }
+  </nav>
+
+  <a class="button button-primary topbar-cta" href="#kontakt">Projekt starten</a>
+</header>
+

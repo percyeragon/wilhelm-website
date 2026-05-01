@@ -1,0 +1,62 @@
+<section class="hero" id="start">
+  <div class="hero-grid">
+    <div class="hero-copy reveal" revealOnScroll>
+      <p class="eyebrow">Moderne Websites für Dienstleister</p>
+      <h1>{{ title }}</h1>
+      <p class="lead">
+        Ich entwickle Websites mit klarer Struktur, starker visueller Wirkung und einem sauberen technischen Fundament.
+      </p>
+
+      <div class="hero-actions">
+        <a class="button button-primary" href="#kontakt">Kostenlos anfragen</a>
+        <a class="button button-secondary" href="#leistungen">Mehr erfahren</a>
+      </div>
+
+      <div class="chip-row" aria-label="Schwerpunkte">
+        @for (pill of heroPills; track pill) {
+          <span class="chip">{{ pill }}</span>
+        }
+      </div>
+
+      <div class="mini-scroll-note">
+        <span class="dot"></span>
+        <span>Scrolle für mehr Details zu Leistungen, Ablauf, Projekten und Kontakt.</span>
+      </div>
+    </div>
+
+    <aside class="hero-panel reveal" revealOnScroll>
+      <div class="panel-glow"></div>
+      <p class="panel-eyebrow">Was du bekommst</p>
+      <h2>Ein moderner Auftritt, der auf dem Desktop und mobil stark wirkt.</h2>
+      <p>
+        Die Seite ist bewusst als scrollbare Landingpage aufgebaut: kompakt im Einstieg, ausführlich in den Inhalten,
+        klar in der Führung.
+      </p>
+
+      <div class="stats-grid">
+        @for (stat of stats; track stat.label) {
+          <div class="stat-card">
+            <strong>{{ stat.value }}</strong>
+            <span>{{ stat.label }}</span>
+          </div>
+        }
+      </div>
+
+      <div class="contact-mini">
+        @for (method of contactMethods; track method.id) {
+          <a
+            class="contact-mini-link"
+            [href]="method.href"
+            [attr.target]="method.external ? '_blank' : null"
+            [attr.rel]="method.external ? 'noopener' : null"
+          >
+            <span>{{ method.label }}</span>
+            <strong>{{ method.value }}</strong>
+            <small>{{ method.note }}</small>
+          </a>
+        }
+      </div>
+    </aside>
+  </div>
+</section>
+

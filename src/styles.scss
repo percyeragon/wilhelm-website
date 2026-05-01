@@ -1,1 +1,114 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f6f9ff;
+  color: #17324d;
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Global Focus-Visible Styles for Accessibility */
+*:focus-visible {
+  outline: 2px solid #5b7cff;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline-offset: 4px;
+}
+
+/* Button Base Styles with Hover Effects */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled):hover {
+    transform: translateY(-2px);
+  }
+
+  &:not(:disabled):active {
+    transform: translateY(0);
+  }
+}
+
+.button-primary {
+  background: linear-gradient(135deg, #5b7cff 0%, #1f3b7f 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(91, 124, 255, 0.2);
+
+  &:not(:disabled):hover {
+    box-shadow: 0 8px 20px rgba(91, 124, 255, 0.3);
+  }
+
+  &:not(:disabled):active {
+    box-shadow: 0 4px 12px rgba(91, 124, 255, 0.2);
+  }
+}
+
+.button-secondary {
+  background: rgba(91, 124, 255, 0.08);
+  color: #5b7cff;
+  border: 1px solid rgba(91, 124, 255, 0.2);
+
+  &:not(:disabled):hover {
+    background: rgba(91, 124, 255, 0.15);
+    border-color: rgba(91, 124, 255, 0.4);
+    box-shadow: 0 4px 12px rgba(91, 124, 255, 0.1);
+  }
+
+  &:not(:disabled):active {
+    background: rgba(91, 124, 255, 0.12);
+  }
+}
+
+/* Link Styles */
+a:not(.button) {
+  position: relative;
+  transition: color 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+/* Selection Highlight */
+::selection {
+  background: rgba(149, 187, 255, 0.28);
+  color: #ffffff;
+}

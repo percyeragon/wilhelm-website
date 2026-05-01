@@ -18,6 +18,8 @@ describe('App', () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, wilhelm-website');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Wilhelm Beiche');
+    expect(compiled.textContent).toContain('Kostenlos anfragen');
+    expect(compiled.textContent).toContain('wilhelm@beiche.de');
   });
 });

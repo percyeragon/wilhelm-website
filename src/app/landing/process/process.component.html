@@ -1,0 +1,57 @@
+<section class="section section-split process-section" id="ablauf">
+  <div class="section-heading reveal" revealOnScroll>
+    <p class="eyebrow">Ablauf</p>
+    <h2>Ein klarer Prozess mit Ruhe, Tempo und Transparenz</h2>
+    <p>
+      Du erkennst früh, wie das Projekt geführt wird: von der ersten Idee bis zum Launch in vier klaren, greifbaren Schritten.
+    </p>
+  </div>
+
+  <div class="process-layout">
+    <aside class="process-overview glass-card reveal" revealOnScroll>
+      <p class="eyebrow">Was dich erwartet</p>
+      <h3>Ein Ablauf, der nicht nach Agentur aussieht, sondern nach guter Zusammenarbeit.</h3>
+      <p>
+        Ich halte den Prozess bewusst schlank, damit wir schnell zu einer starken Website kommen – ohne unnötige Schleifen oder unnötigen Aufwand.
+      </p>
+
+      <div class="process-points">
+        @for (point of processHighlights; track point) {
+          <div class="process-point">
+            <span class="process-point-bullet"></span>
+            <p>{{ point }}</p>
+          </div>
+        }
+      </div>
+
+      <div class="process-note">
+        <span>Am Ende entsteht</span>
+        <strong>eine Website mit Struktur, Wirkung und klarer Richtung.</strong>
+      </div>
+    </aside>
+
+    <div class="process-track">
+      @for (step of process; track step.id) {
+        <article
+          class="process-step glass-card reveal"
+          revealOnScroll
+          [style.--delay]="($index * 120) + 'ms'"
+        >
+          <div class="process-step-head">
+            <span class="timeline-step">{{ step.step }}</span>
+            <span class="process-duration">{{ step.duration }}</span>
+          </div>
+
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.text }}</p>
+
+          <div class="process-result">
+            <span>Ergebnis</span>
+            <strong>{{ step.result }}</strong>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+

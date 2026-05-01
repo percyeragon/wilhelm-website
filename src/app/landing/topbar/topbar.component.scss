@@ -1,0 +1,147 @@
+:host {
+  display: block;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid rgba(23, 50, 77, 0.08);
+  background: rgba(246, 249, 255, 0.95);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.scrolled {
+    box-shadow: 0 4px 16px rgba(23, 50, 77, 0.06);
+    border-bottom-color: rgba(23, 50, 77, 0.12);
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #5b7cff;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+.brand-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #5b7cff 0%, #1f3b7f 100%);
+  color: white;
+  font-weight: 700;
+  font-size: 0.875rem;
+  border-radius: 4px;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+
+  strong {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #17324d;
+  }
+
+  small {
+    font-size: 0.7rem;
+    color: #5a7996;
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0 auto;
+
+  a {
+    text-decoration: none;
+    font-size: 0.95rem;
+    color: #17324d;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.2s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #5b7cff, #1f3b7f);
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &:hover {
+      color: #5b7cff;
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid #5b7cff;
+      outline-offset: 4px;
+    }
+
+    &[aria-current="page"] {
+      color: #5b7cff;
+      font-weight: 600;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.topbar-cta {
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    gap: 1rem;
+    padding: 0.875rem 1.5rem;
+  }
+
+  .brand-text {
+    small {
+      display: none;
+    }
+  }
+
+  .nav {
+    gap: 0.75rem;
+    font-size: 0.9rem;
+
+    a::after {
+      display: none;
+    }
+  }
+}
+
+

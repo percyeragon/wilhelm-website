@@ -1,0 +1,6 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 240 C 200 160, 400 320, 600 240 C 800 160, 1000 320, 1200 240" stroke="rgba(120,165,220,0.4)" stroke-width="2"/>
+  <path d="M0 360 C 200 280, 400 440, 600 360 C 800 280, 1000 440, 1200 360" stroke="rgba(120,165,220,0.3)" stroke-width="2"/>
+  <path d="M0 480 C 200 400, 400 560, 600 480 C 800 400, 1000 560, 1200 480" stroke="rgba(120,165,220,0.24)" stroke-width="2"/>
+</svg>
+
