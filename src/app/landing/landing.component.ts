@@ -181,13 +181,13 @@ export class LandingComponent {
     {
       id: 'social-linkedin',
       label: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/wilhelmbeiche',
+      href: 'https://www.linkedin.com/in/wilhelm-beiche-a9241b202/?skipRedirect=true',
       icon: 'linkedin',
     },
     {
       id: 'social-github',
       label: 'GitHub',
-      href: 'https://github.com/wilhelmbeiche',
+      href: 'https://github.com/percyeragon',
       icon: 'github',
     },
   ];
