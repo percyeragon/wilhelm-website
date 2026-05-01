@@ -72,6 +72,72 @@
          </a>
        }
      </div>
+
+    <div class="quick-request glass-card" revealOnScroll [style.--delay]="'180ms'">
+      <p class="quick-request-eyebrow">Schnellanfrage</p>
+      <h3>Teile mir kurz dein Vorhaben mit.</h3>
+      <p class="quick-request-copy">
+        Nach dem Absenden öffnet sich dein E-Mail-Programm mit einer vorbereiteten Anfrage. So geht nichts verloren und du bleibst flexibel.
+      </p>
+
+      <form class="quick-request-form" [formGroup]="quickRequestForm" (ngSubmit)="submitQuickRequest()" novalidate>
+        <label class="form-field" for="quick-request-name">
+          <span>Name</span>
+          <input
+            id="quick-request-name"
+            type="text"
+            formControlName="name"
+            autocomplete="name"
+            [attr.aria-invalid]="isInvalid('name') ? 'true' : 'false'"
+            [attr.aria-describedby]="isInvalid('name') ? 'quick-request-name-error' : null"
+          />
+        </label>
+        @if (isInvalid('name')) {
+          <small class="field-error" id="quick-request-name-error">Bitte gib mindestens 2 Zeichen ein.</small>
+        }
+
+        <label class="form-field" for="quick-request-email">
+          <span>E-Mail</span>
+          <input
+            id="quick-request-email"
+            type="email"
+            formControlName="email"
+            autocomplete="email"
+            [attr.aria-invalid]="isInvalid('email') ? 'true' : 'false'"
+            [attr.aria-describedby]="isInvalid('email') ? 'quick-request-email-error' : null"
+          />
+        </label>
+        @if (isInvalid('email')) {
+          <small class="field-error" id="quick-request-email-error">Bitte gib eine gültige E-Mail-Adresse ein.</small>
+        }
+
+        <label class="form-field" for="quick-request-message">
+          <span>Nachricht</span>
+          <textarea
+            id="quick-request-message"
+            rows="4"
+            maxlength="800"
+            formControlName="message"
+            [attr.aria-invalid]="isInvalid('message') ? 'true' : 'false'"
+            [attr.aria-describedby]="isInvalid('message') ? 'quick-request-message-error' : null"
+          ></textarea>
+        </label>
+        <small class="field-hint">{{ quickRequestForm.controls.message.value.length }}/800 Zeichen</small>
+        @if (isInvalid('message')) {
+          <small class="field-error" id="quick-request-message-error">Bitte beschreibe dein Vorhaben mit mindestens 20 Zeichen.</small>
+        }
+
+        <button class="button button-primary quick-request-submit" type="submit" [disabled]="quickRequestForm.invalid">
+          Anfrage vorbereiten
+        </button>
+
+        <p class="quick-request-feedback" aria-live="polite">
+          @if (requestStatus === 'submitted') {
+            Perfekt – dein E-Mail-Entwurf wurde geöffnet.
+          }
+        </p>
+      </form>
+    </div>
   </div>
 </section>
 

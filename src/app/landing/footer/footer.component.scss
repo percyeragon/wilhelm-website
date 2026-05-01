@@ -20,6 +20,25 @@
   }
 }
 
+.legal-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  a {
+    color: #2b4d6c;
+    text-decoration: none;
+    font-size: 0.9rem;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 0.16em;
+    }
+  }
+}
+
 .scroll-to-top {
   position: fixed;
   bottom: 2rem;
