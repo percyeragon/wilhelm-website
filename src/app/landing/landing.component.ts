@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeroComponent } from './hero/hero.component';
+import { SchemaService } from '../shared/schema.service';
 import {
   ContactMethod,
   FaqItem,
@@ -34,7 +35,11 @@ import { TopbarComponent } from './topbar/topbar.component';
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss',
 })
-export class LandingComponent {
+export class LandingComponent implements OnInit, OnDestroy {
+  private readonly schemaId = 'landing-page-structured-data';
+
+  constructor(private readonly schemaService: SchemaService) {}
+
   protected readonly title = 'Wilhelm Beiche';
 
   protected readonly navItems: NavItem[] = [
@@ -222,4 +227,38 @@ export class LandingComponent {
     { value: 'schnell', label: 'Technik & Performance' },
     { value: 'klar', label: 'Inhalt & Struktur' },
   ];
+
+  ngOnInit(): void {
+    this.schemaService.upsertSchema(this.schemaId, this.buildSchemaData());
+  }
+
+  ngOnDestroy(): void {
+    this.schemaService.removeSchema(this.schemaId);
+  }
+
+  private buildSchemaData(): Record<string, unknown> {
+    const email = this.contactMethods.find((method) => method.id === 'contact-email')?.value;
+    const canonicalUrl = typeof window !== 'undefined' ? window.location.origin : 'https://wilhelm-beiche.de';
+
+    return {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'ProfessionalService',
+          name: this.title,
+          url: canonicalUrl,
+          serviceType: this.services.map((service) => service.title),
+          areaServed: ['Deutschland', 'Österreich', 'Schweiz'],
+          email,
+          sameAs: this.socialLinks.map((socialLink) => socialLink.href),
+        },
+        {
+          '@type': 'WebSite',
+          name: `${this.title} – Webentwicklung & Webdesign`,
+          url: canonicalUrl,
+          inLanguage: 'de-DE',
+        },
+      ],
+    };
+  }
 }

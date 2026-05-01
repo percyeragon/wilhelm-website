@@ -1,5 +1,5 @@
-<header class="topbar reveal" revealOnScroll>
-  <a class="brand" href="#start" aria-label="Zur Startsektion">
+<header class="topbar reveal" revealOnScroll [class.menu-open]="isMenuOpen()">
+  <a class="brand" href="#start" aria-label="Zur Startsektion" (click)="closeMobileMenu()">
     <span class="brand-mark">WB</span>
     <span class="brand-text">
       <strong>Wilhelm Beiche</strong>
@@ -7,12 +7,26 @@
     </span>
   </a>
 
-  <nav class="nav" aria-label="Hauptnavigation" appScrollSpy>
+  <button
+    class="menu-toggle"
+    type="button"
+    [attr.aria-expanded]="isMenuOpen()"
+    aria-controls="topbar-navigation"
+    aria-label="Navigation umschalten"
+    (click)="toggleMobileMenu()"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="nav" id="topbar-navigation" aria-label="Hauptnavigation" appScrollSpy [class.is-open]="isMenuOpen()">
     @for (item of navItems; track item.href) {
-      <a [href]="item.href">{{ item.label }}</a>
+      <a [href]="item.href" (click)="closeMobileMenu()">{{ item.label }}</a>
     }
+    <a class="button button-primary nav-cta" href="#kontakt" (click)="closeMobileMenu()">Projekt starten</a>
   </nav>
 
-  <a class="button button-primary topbar-cta" href="#kontakt">Projekt starten</a>
+  <a class="button button-primary topbar-cta" href="#kontakt" (click)="closeMobileMenu()">Projekt starten</a>
 </header>
 

@@ -70,6 +70,34 @@
   }
 }
 
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.24rem;
+  width: 2.45rem;
+  height: 2.45rem;
+  border: 1px solid rgba(23, 50, 77, 0.14);
+  border-radius: 0.7rem;
+  background: rgba(255, 255, 255, 0.82);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+
+  span {
+    width: 1.2rem;
+    height: 2px;
+    margin: 0 auto;
+    border-radius: 999px;
+    background: #17324d;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #5b7cff;
+    outline-offset: 2px;
+  }
+}
+
 .nav {
   display: flex;
   gap: 1.5rem;
@@ -118,14 +146,41 @@
   }
 }
 
+.nav-cta {
+  display: none;
+}
+
 .topbar-cta {
   flex-shrink: 0;
 }
 
 @media (max-width: 768px) {
   .topbar {
-    gap: 1rem;
-    padding: 0.875rem 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    padding: 0.875rem 1rem;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    margin-left: auto;
+  }
+
+  .menu-toggle[aria-expanded='true'] {
+    background: rgba(91, 124, 255, 0.08);
+    border-color: rgba(91, 124, 255, 0.3);
+
+    span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    span:nth-child(2) {
+      opacity: 0;
+    }
+
+    span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
   }
 
   .brand-text {
@@ -134,13 +189,48 @@
     }
   }
 
+  .topbar-cta {
+    display: none;
+  }
+
   .nav {
-    gap: 0.75rem;
-    font-size: 0.9rem;
+    order: 3;
+    flex-direction: column;
+    gap: 0.3rem;
+    width: 100%;
+    margin: 0;
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: 0.8rem;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid transparent;
+    transition: max-height 0.24s ease, opacity 0.24s ease, padding 0.24s ease, border-color 0.24s ease;
+
+    &.is-open {
+      max-height: 28rem;
+      opacity: 1;
+      pointer-events: auto;
+      padding: 0.55rem;
+      border-color: rgba(23, 50, 77, 0.12);
+    }
+
+    a {
+      width: 100%;
+      padding: 0.72rem 0.8rem;
+      border-radius: 0.6rem;
+    }
 
     a::after {
       display: none;
     }
+  }
+
+  .nav-cta {
+    display: inline-flex;
+    justify-content: center;
+    margin-top: 0.2rem;
   }
 }
 
