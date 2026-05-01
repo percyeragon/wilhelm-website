@@ -12,6 +12,7 @@ export class FooterComponent implements OnInit, OnDestroy {
   isScrollVisible = false;
   private destroy$ = new Subject<void>();
   private scrollSubject$ = new Subject<void>();
+  private readonly onWindowScroll = () => this.scrollSubject$.next();
 
   constructor(private ngZone: NgZone) {}
 
@@ -24,8 +25,10 @@ export class FooterComponent implements OnInit, OnDestroy {
         )
         .subscribe(() => this.updateScrollVisibility());
 
-      window.addEventListener('scroll', () => this.scrollSubject$.next());
+      window.addEventListener('scroll', this.onWindowScroll, { passive: true });
     });
+
+    this.updateScrollVisibility();
   }
 
   private updateScrollVisibility() {
@@ -36,6 +39,7 @@ export class FooterComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    window.removeEventListener('scroll', this.onWindowScroll);
     this.destroy$.next();
     this.destroy$.complete();
   }

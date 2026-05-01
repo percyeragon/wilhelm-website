@@ -9,6 +9,7 @@ import { takeUntil, debounceTime } from 'rxjs/operators';
 export class ScrollSpyDirective implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   private scrollSubject$ = new Subject<void>();
+  private readonly onWindowScroll = () => this.scrollSubject$.next();
 
   constructor(
     private el: ElementRef,
@@ -24,7 +25,7 @@ export class ScrollSpyDirective implements OnInit, OnDestroy {
         )
         .subscribe(() => this.updateActiveLink());
 
-      window.addEventListener('scroll', () => this.scrollSubject$.next());
+      window.addEventListener('scroll', this.onWindowScroll, { passive: true });
     });
     this.updateActiveLink();
   }
@@ -68,6 +69,7 @@ export class ScrollSpyDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    window.removeEventListener('scroll', this.onWindowScroll);
     this.destroy$.next();
     this.destroy$.complete();
   }

@@ -20,6 +20,7 @@ describe('App', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain('Wilhelm Beiche');
     expect(compiled.textContent).toContain('Kostenlos anfragen');
+    expect(compiled.textContent).toContain('Häufige Fragen zur Zusammenarbeit');
     expect(compiled.textContent).toContain('wilhelm@beiche.de');
   });
 });

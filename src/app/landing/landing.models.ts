@@ -18,6 +18,12 @@ export interface ProcessStep {
   result: string;
 }
 
+export interface FaqItem {
+  id: string;
+  question: string;
+  answer: string;
+}
+
 export interface ProjectItem {
   id: string;
   name: string;

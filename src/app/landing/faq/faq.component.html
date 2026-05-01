@@ -1,0 +1,29 @@
+<section class="section section-split faq-section" id="faq">
+  <div class="section-heading reveal" revealOnScroll>
+    <p class="eyebrow">FAQ</p>
+    <h2>Häufige Fragen zur Zusammenarbeit</h2>
+    <p>
+      Hier findest du schnelle Antworten zu Ablauf, Geschwindigkeit und Betreuung rund um dein Projekt.
+    </p>
+  </div>
+
+  <div class="faq-list">
+    @for (faq of faqs; track faq.id) {
+      <details
+        class="faq-item glass-card reveal"
+        revealOnScroll
+        [style.--delay]="($index * 80) + 'ms'"
+      >
+        <summary>
+          <span>{{ faq.question }}</span>
+          <span class="faq-toggle" aria-hidden="true"></span>
+        </summary>
+        <p>{{ faq.answer }}</p>
+      </details>
+    } @empty {
+      <div class="faq-empty glass-card reveal" revealOnScroll>
+        Aktuell sind keine Fragen hinterlegt. Schreib mir direkt per E-Mail.
+      </div>
+    }
+  </div>
+</section>

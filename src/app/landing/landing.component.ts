@@ -4,6 +4,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeroComponent } from './hero/hero.component';
 import {
   ContactMethod,
+  FaqItem,
   NavItem,
   ProcessStep,
   ProjectItem,
@@ -11,6 +12,7 @@ import {
   SocialLink,
   StatItem,
 } from './landing.models';
+import { FaqComponent } from './faq/faq.component';
 import { ProcessComponent } from './process/process.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ServicesComponent } from './services/services.component';
@@ -25,6 +27,7 @@ import { TopbarComponent } from './topbar/topbar.component';
     ServicesComponent,
     ProcessComponent,
     ProjectsComponent,
+    FaqComponent,
     ContactComponent,
     FooterComponent,
   ],
@@ -39,6 +42,7 @@ export class LandingComponent {
     { label: 'Leistungen', href: '#leistungen' },
     { label: 'Ablauf', href: '#ablauf' },
     { label: 'Projekte', href: '#projekte' },
+    { label: 'FAQ', href: '#faq' },
     { label: 'Kontakt', href: '#kontakt' },
   ];
 
@@ -162,6 +166,27 @@ export class LandingComponent {
       result: 'Präzise Nutzerführung und deutlich strukturierter Funnel.',
       services: ['Message-Workshop', 'UI-Design', 'Landingpage-Flow', 'Analytics-Setup'],
       cta: { label: 'Kontakt aufnehmen', href: '#kontakt' },
+    },
+  ];
+
+  protected readonly faqs: FaqItem[] = [
+    {
+      id: 'faq-1',
+      question: 'Wie schnell kann eine neue Website live gehen?',
+      answer:
+        'Je nach Umfang meist in zwei bis vier Wochen. Bei klaren Inhalten und kurzen Abstimmungen kann ein fokussierter Launch auch schneller erfolgen.',
+    },
+    {
+      id: 'faq-2',
+      question: 'Kann ich meine Inhalte später selbst anpassen?',
+      answer:
+        'Ja. Struktur und Inhalte werden so aufgebaut, dass Änderungen nachvollziehbar sind. Auf Wunsch bekommst du zusätzlich eine kurze Übergabe mit den wichtigsten Handgriffen.',
+    },
+    {
+      id: 'faq-3',
+      question: 'Unterstützt du auch nach dem Launch?',
+      answer:
+        'Ja, ich begleite dich auch nach dem Go-live bei Pflege, kleinen Weiterentwicklungen und technischen Fragen, damit die Seite langfristig stabil und aktuell bleibt.',
     },
   ];
 
